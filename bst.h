@@ -337,6 +337,7 @@ typename BinarySearchTree<Key, Value>::iterator&
 BinarySearchTree<Key, Value>::iterator::operator++()
 {
     // TODO
+    if (current_ == nullptr) return *this;
     Node<Key, Value>* parent = current_->getParent();
     Node<Key, Value>* rightChild = current_->getRight();
     // If no right child, return to parent (or parent's parent if parent is done), or nullptr if largest
@@ -348,9 +349,8 @@ BinarySearchTree<Key, Value>::iterator::operator++()
     }
     // If has right child, go all the way to bottom left from child
     else {
-        Node<Key, Value>* temp = rightChild;
-        while (temp->getLeft() != nullptr) temp = temp->getLeft();
-        current_ = temp;
+        current_ = rightChild;
+        while (current_->getLeft() != nullptr) current_ = current_->getLeft();
     }
     return *this;
 }
@@ -625,11 +625,11 @@ bool BinarySearchTree<Key, Value>::checkNodeBalance(Node<Key, Value> *root) cons
 	//Are they balanced?
 	if (leftHeight > 0) {
 		bool leftBalanced = checkNodeBalance(root->getLeft());
-		if (leftBalanced == false) {return false;}
+		if (leftBalanced == false) return false;
 	}
 	if (rightHeight > 0) {
 		bool rightBalanced = checkNodeBalance(root->getRight());
-		if (rightBalanced == false) {return false;}
+		if (rightBalanced == false) return false;
 	}
 	// If all nodes are balanced return true!
 	return true;
