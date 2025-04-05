@@ -33,11 +33,11 @@ int main(int argc, char *argv[])
     }
 
 
-    /*
     // AVL Tree Tests
     AVLTree<char,int> at;
-    at.insert(std::make_pair('a',1));
+    at.insert(std::make_pair('c',1));
     at.insert(std::make_pair('b',2));
+    at.insert(std::make_pair('a',3));
 
     cout << "\nAVLTree contents:" << endl;
     for(AVLTree<char,int>::iterator it = at.begin(); it != at.end(); ++it) {
@@ -51,8 +51,6 @@ int main(int argc, char *argv[])
     }
     cout << "Erasing b" << endl;
     at.remove('b');
-
-    */
 
     return 0;
 }

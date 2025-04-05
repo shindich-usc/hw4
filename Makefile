@@ -1,5 +1,5 @@
 CXX=g++
-CXXFLAGS=-g -Wall -std=c++11 
+CXXFLAGS=-g -Wall --std=c++11 
 # Uncomment for parser DEBUG
 #DEFS=-DDEBUG
 
